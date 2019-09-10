@@ -6,15 +6,15 @@ const leftImage = document.getElementById('left');
 const centerImage = document.getElementById('center');
 const rightImage = document.getElementById('right');
 
-var allProducts = [];
+let allProducts = [];
 const container = document.getElementById('image_container');
-const viewed = [];
-const labels = [];
+let viewed = [];
+let labels = [];
 const pics = [leftImage, centerImage, rightImage];
 const list = document.getElementById('productlist');
-const totalClicks = 0;
-const views = [];
-const votes = [];
+let totalClicks = 0;
+let views = [];
+let votes = [];
 
 function Product(name) {
   this.name = name;
@@ -30,14 +30,15 @@ function makeRandom() {
 
 function displayPics(){
   while(viewed.length < 6){
-    const rando = makeRandom();
+    let rando = makeRandom();
     while(!viewed.includes(rando)){
       viewed.push(rando);
     }
   }
-  // console.log(rando);
+
   // TODO: In a sentence or two, explain why the previous line of code threw an error when we changed the variable declaration from `const to `const`.
   // PUT YOUR RESPONSE IN THIS COMMENT
+  // We changed the let var to const with the scope of the variable changing. The scope is now local and can not be seen.
   console.log(viewed);
 
   for (let i = 0; i < 3; i++){
@@ -71,7 +72,7 @@ function handleClick(event) {
 }
 
 function showList() {
-  for(const i = 0; i < allProducts.length; i++) {
+  for(let i = 0; i < allProducts.length; i++) {
     const liEl = document.createElement('li');
     liEl.textContent = `${allProducts[i].name} has ${allProducts[i].votes} votes in  ${allProducts[i].views} views`;
     list.appendChild(liEl);
